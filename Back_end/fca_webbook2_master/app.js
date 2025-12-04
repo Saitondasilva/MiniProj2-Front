@@ -6,6 +6,7 @@ const cors = require('cors');
 const db = require('./init/db');
 const authRoutes = require('./routes/auth.routes');
 const animalRoutes = require('./routes/animal.routes');
+const expertsRoutes = require('./routes/experts.routes');
 
 const app = express();
 const port = process.env.PORT || 8082;
@@ -17,8 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Rotas
-app.use('/auth', authRoutes);
+app.use('/auth', authRoutes); // prefixo das rotas
 app.use('/animal', animalRoutes); // prefixo das rotas
+app.use('/experts', expertsRoutes); // prefixo das rotas
 
 // Conectar DB e iniciar servidor
 db().then(() => {
