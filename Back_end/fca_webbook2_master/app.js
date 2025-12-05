@@ -7,6 +7,7 @@ const db = require('./init/db');
 const authRoutes = require('./routes/auth.routes');
 const animalRoutes = require('./routes/animal.routes');
 const expertsRoutes = require('./routes/experts.routes');
+const sponsorRoutes = require('./routes/sponsor.routes');
 
 const app = express();
 const port = process.env.PORT || 8082;
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use('/auth', authRoutes); // prefixo das rotas
 app.use('/animal', animalRoutes); // prefixo das rotas
 app.use('/experts', expertsRoutes); // prefixo das rotas
+app.use('/sponsor', sponsorRoutes); // prefixo das rotas
 
 // Conectar DB e iniciar servidor
 db().then(() => {

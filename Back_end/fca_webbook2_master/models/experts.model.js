@@ -1,31 +1,38 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ExpertsSchema = new Schema(
+const SponsorSchema = new Schema(
     {
+        // Dados básicos do sponsor
         nome: {
             type: String,
             required: true,
             trim: true
         },
 
-        especialidade: {
+        localizacao: {
             type: String,
             required: true,
             trim: true
         },
 
-        titulo_academico: {
+        website: {
             type: String,
-            required: true,
-            trim: true
+            trim: true,
+            default: null
         },
 
-        // Relacionamento com Questions
-        questions: [
+        contacto: {
+            type: String,
+            trim: true,
+            default: null
+        },
+
+        // Relacionamento com outros modelos (exemplo: campanhas)
+        campaigns: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "questions"
+                ref: "campaigns" // ou outro modelo relacionado
             }
         ],
 
@@ -40,4 +47,4 @@ const ExpertsSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model("experts", ExpertsSchema);
+module.exports = mongoose.model("sponsors", SponsorSchema);
